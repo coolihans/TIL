@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% load tz %}
+
+{% block content %}
+<h1>{{article.title}}</h1>
+
+<small>
+    {{article.created_at | localtime }} | {{article.updated_at}}
+</small>
+
+<p>{{article.content}}</p>
+
+{% endblock content %}
+
+
