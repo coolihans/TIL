@@ -37,6 +37,8 @@ ctrl + shift + p -> interpreter -> venv 로 고르기
 pip list
 
 django==3.2.12 설치
+
+ipython + django_extensions
 ```
 
 
