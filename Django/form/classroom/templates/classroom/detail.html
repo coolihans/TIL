@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load bootstrap5 %}
+
+{% block content %}
+    <h1>Detail</h1>
+    <p>name : {{ student.name }}</p>
+    <p>phone : {{ student.phone }}</p>
+    <p>is_cs : {{ student.is_cs }}</p>
+    <p>age : {{ student.age }}</p> 
+    {% comment %} <form action="{% url 'classroom:detail' student.pk %}" method="POST">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        <input type="submit">
+    </form> {% endcomment %}
+
+
+
+    <a href="{% url 'classroom:index' %}">back</a>
+{% endblock content %}

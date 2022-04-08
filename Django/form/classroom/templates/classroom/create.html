@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load bootstrap5 %}
+
+{% block content %}
+    <h1>add</h1>
+    <hr>
+        <form action="{% url 'classroom:create' %}" method="POST">
+            {% csrf_token %}
+            {% bootstrap_form form %}
+            <input type="submit">
+        </form>
+    <hr>
+
+    {% comment %} <h2>looping</h2>
+    <form action="{% url 'classroom:create' %}" method="POST">
+        {% csrf_token %}
+        {% for student in classroom %}
+            {{ student.age }}
+            {{ student }}
+        
+        
+        {% endfor %} {% endcomment %}
+
+
+{% endblock content %}
+
+
+

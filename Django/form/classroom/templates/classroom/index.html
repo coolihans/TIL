@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Classroom</h1>
+    <a href="{% url 'classroom:create' %}">추가</a>
+    <hr>
+    {% for student in classroom %}
+        <p>name : {{ student.name }}</p>
+        <p>phone : {{ student.phone }}</p>
+        <p>is_cs : {{ student.is_cs }}</p>
+        <p>age : {{ student.age }}</p>
+        <a href="{% url 'classroom:detail' student.pk %}">detail</a>
+        <hr>
+    {% endfor %}    
+
+
+{% endblock content %}
+
+
+
