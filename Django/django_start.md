@@ -41,6 +41,8 @@ pip install -r requirements.txt
 django==3.2.12 설치
 
 ipython + django_extensions
+
+django_bootstrap5
 ```
 
 
