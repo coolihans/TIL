@@ -43,9 +43,11 @@ django==3.2.12 설치
 ipython + django_extensions
 
 django_bootstrap5
+
+pip freeze > requirements.txt  => 설치한거 저장해놓는 거
 ```
 
-
+11111111111111111111111111111111111111111111111111111111111
 
 ![image-20220302101621082](django.assets/image-20220302101621082.png)
 

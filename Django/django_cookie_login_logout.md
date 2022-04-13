@@ -1,6 +1,6 @@
 # 0411 django 정리 (accounts)
 
-views.py 임포트 요약
+views.py 임포트 요약 공부...
 
 ```python
 from django.contrib.auth import login as auth_login
@@ -16,7 +16,7 @@ from .forms import CustomUserChangeForm
 
 
 
-## django authentication system
+## Django authentication system 1
 
 ```django
 settings.py / INSTALLED_APPS 에 포함되어 제공된다.
@@ -203,3 +203,103 @@ def logout(request):
 ![image-20220412011757685](django user 정리.assets/image-20220412011757685.png)
 
 ![image-20220412011822014](django user 정리.assets/image-20220412011822014.png)
+
+
+
+
+
+## Django authentication system 2
+
+### 회원가입(Signup)
+
+- __UserCreationForm()__  ==> CustomUserCreationForm()
+
+  ![image-20220413204009237](django_cookie_login_logout.assets/image-20220413204009237.png)
+
+```python
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import login as auth_login
+
+@require_http_methods(['GET', 'POST'])
+def signup(request):
+    if request.user.is_authenticated:
+        return redirect('articles:index')
+
+    if request.method == 'POST':
+        form = CustomUserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            auth_login(request, user)
+            return redirect('articles:index')
+    else:
+        form = CustomUserCreationForm()
+    context = {
+        'form': form,
+    }
+    return render(request, 'accounts/signup.html', context)
+```
+
+
+
+### 회원탈퇴
+
+![image-20220413204523242](django_cookie_login_logout.assets/image-20220413204523242.png)
+
+```python
+from django.contrib.auth import logout as auth_logout
+
+@require_POST
+def logout(request):
+    if request.user.is_authenticated:
+        request.user.delete()
+        auth_logout(request)
+    return redirect('articles:index')
+```
+
+
+
+### 회원정보수정
+
+![image-20220413204849518](django_cookie_login_logout.assets/image-20220413204849518.png)
+
+```python
+from django.contrib.auth.forms import UserChangeForm, UserCreationForm
+from django.contrib.auth import get_user_model
+
+class CustomUserChangeForm(UserChangeForm):
+
+    # password = None
+
+    class Meta:
+        model = get_user_model() # User
+        fields = ('email', 'first_name', 'last_name',)
+```
+
+![image-20220413205111095](django_cookie_login_logout.assets/image-20220413205111095.png)
+
+### 비밀번호 변경
+
+![image-20220413205515248](django_cookie_login_logout.assets/image-20220413205515248.png)
+
+```python
+from django.contrib.auth.forms import PasswordChangeForm
+
+@login_required
+@require_http_methods(['GET', 'POST'])
+def change_password(request):
+    if request.method == 'POST':
+        form = PasswordChangeForm(request.user, request.POST)
+        if form.is_valid():
+            # user = form.save()
+            # update_session_auth_hash(request, user)
+            form.save()
+            update_session_auth_hash(request, form.user)
+            return redirect('articles:index')
+    else:
+        form = PasswordChangeForm(request.user)
+    context = {
+        'form': form,
+    }
+    return render(request, 'accounts/change_password.html', context)
+```
+
