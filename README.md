@@ -1,3 +1,3 @@
 # Today I Learned something
 
-2022. 01~ SSAFY start
+2022. 01.06~ SSAFY start
