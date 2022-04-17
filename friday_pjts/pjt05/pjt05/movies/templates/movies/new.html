@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>NEW</h1>
+
+<form action="{% url 'movies:create' %}">
+    <div>
+        TITLE <input type="text" name = 'title'>
+    </div>
+    <div>
+        AUDIENCE <input type="number" name = 'audience'>
+    </div>
+    <div>
+        RELEASE_DATE <input type="date" name = 'release_date'>
+    </div>
+    <div>
+        GENRE <select name="genre" id="genre-select">
+            <option value="">
+                장르를 고르시오
+            </option>
+            <option value="코미디">코미디</option>
+            <option value="로맨스">로맨스</option>
+            <option value="액션">액션</option>
+        </select>
+    </div>
+    <div>
+        SCORE <input type="number" step = '0.5' min = '0' max = '10' name = 'score'> 
+    </div>
+    <div>
+        POSTER_URL <input type="text" name = 'poster_url'>
+    </div>
+    <div>
+        DESCRIPTION <textarea name="description" id="des" cols="100" rows="10"></textarea>
+    </div>
+    <div>
+        <button>Submit</button>
+    </div>
+</form>
+<hr>
+<a href="{% url 'movies:index' %}">BACK</a>
+
+{% endblock content %}

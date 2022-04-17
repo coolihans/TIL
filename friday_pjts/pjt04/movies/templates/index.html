@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<section class="container">
+    <div class="row">
+      <!-- 카드 1 -->
+      <article class="col-sm-6 col-md-4 col-lg-3 my-1">
+        <div class="card">
+            <a href="#movie1modal" data-bs-toggle="modal"><img src="https://via.placeholder.com/600x840" class="card-img-top" alt=""></a>
+          <div class="card-body">
+            <h5 class="card-title">Shawshank Redemption</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          </div>
+        </div>
+      </article>
+      <!-- 카드 2 -->
+      <article class="col-sm-6 col-md-4 col-lg-3 my-1">
+        <div class="card">
+            <a href="#movie1modal" data-bs-toggle="modal"><img src="https://via.placeholder.com/600x840" class="card-img-top" alt=""></a>
+          <div class="card-body">
+            <h5 class="card-title">Dead Poets Society</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          </div>
+        </div>
+      </article>
+      <!-- 카드 3 -->
+      <article class="col-sm-6 col-md-4 col-lg-3 my-1">
+        <div class="card">
+            <a href="#movie1modal" data-bs-toggle="modal"><img src="https://via.placeholder.com/600x840" class="card-img-top" alt=""></a>
+          <div class="card-body">
+            <h5 class="card-title">Dark Night Rises</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          </div>
+        </div>
+      </article>
+      <!-- 카드 4 -->
+      <article class="col-sm-6 col-md-4 col-lg-3 my-1">
+        <div class="card">
+            <a href="#movie1modal" data-bs-toggle="modal"><img src="https://via.placeholder.com/600x840" class="card-img-top" alt=""></a>
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          </div>
+        </div>
+      </article>
+      <!-- 카드 5 -->
+      <article class="col-sm-6 col-md-4 col-lg-3 my-1">
+        <div class="card">
+            <a href="#movie1modal" data-bs-toggle="modal"><img src="https://via.placeholder.com/600x840" class="card-img-top" alt=""></a>
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          </div>
+        </div>
+      </article>
+      <!-- 카드 6 -->
+      <article class="col-sm-6 col-md-4 col-lg-3 my-1">
+        <div class="card">
+            <a href="#movie1modal" data-bs-toggle="modal"><img src="https://via.placeholder.com/600x840" class="card-img-top" alt=""></a>
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          </div>
+        </div>
+      </article>
+    </div>
+    </section>
+
+
+    <div class="modal" tabindex="-1" id="movie1modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div id="carouselExampleIndicators" class="carousel slide z-depth-1-half" data-bs-ride="carousel">
+                        <div class="carousel-indicators">
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                        </div>
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img src="{% static 'movie1.jpg' %}" class="d-block w-100" alt="">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="{% static 'movie2.jpg' %}" class="d-block w-100" alt="">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="{% static 'movie3.jpg' %}" class="d-block w-100" alt="">
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>    
+                    </div>
+                </div>
+            </div>
+        </div>    
+    </div>  
+{% endblock content %}
+
+
