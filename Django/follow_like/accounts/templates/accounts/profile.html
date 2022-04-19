@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<h2> {{ profile_user }} 의 프로필</h2>
+<span>팔로워 : {{ profile_user.fans.all|length }} / 팔로잉 : {{ profile_user.stars.all|length }}</span>
+<hr>
+
+{% comment %} 팔로우 버튼 {% endcomment %}
+<div>
+    {% if user != profile_user %}
+    <form action="{% url 'accounts:follow' profile_user.pk %}" method="POST">
+        {% csrf_token %}
+        {% if is_fan %}
+        <button>언팔로우</button>
+        {% else %}
+        <button>팔로우</button>
+        {% endif %}
+    </form>
+    {% endif %}
+</div>
+    
+<h3>작성한 글 목록</h3>
+<ul>
+    {% for article in profile_user.articles.all %}
+    <li>   
+        <p><a href="{% url 'articles:article_detail' article.pk %}">{{ article.title }}</a></p>
+        [ {{ article.like_users.all|length}} likes / {{ article.comment_set.all|length }} comments ]
+    </li>
+    {% endfor %}
+</ul>
+
+
+{% endblock content %}

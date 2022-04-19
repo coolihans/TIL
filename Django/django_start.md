@@ -67,5 +67,5 @@ pip freeze > requirements.txt  => 설치한거 저장해놓는 거
 
 ## 앱 등록시 주의 사항
 
-![image-20220302102650265](django.assets/image-20220302102650265.png)
+
 

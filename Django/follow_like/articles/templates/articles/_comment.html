@@ -1,0 +1,25 @@
+
+
+<!-- comment CREATE UI -->
+<form action="{% url 'articles:comment_create' article.pk %}" method="POST">
+    {% csrf_token %}
+    {{ form }}
+    <button>댓!</button>
+  </form>
+  
+  <!-- comment READ UI -->
+  <ul>
+    {% for comment in article.comment_set.all %}
+    <li>  
+      [{{ comment.user.username }}] : {{ comment.content }}
+      
+      {% if request.user == comment.user %}
+      <!-- comment DELETE UI -->
+      <form action="{% url 'articles:comment_delete' article.pk comment.pk %}" method="POST">
+        {% csrf_token %}
+        <button>[x]</button>
+      </form>
+      {% endif %}
+    </li>
+    {% endfor %}
+  </ul>

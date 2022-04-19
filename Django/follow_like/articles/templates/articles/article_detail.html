@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{{ article.title }}</h1>
+<h2> 작성자: <a href="{% url 'accounts:profile' article.user %}">{{ article.user.username }}</a></h2>
+
+{% if request.user == article.user %}
+<div>
+  <div>
+    <a href="{% url 'articles:article_update' article.pk %}">
+      <button>Update</button>
+    </a>
+  </div>
+  <form action="{% url 'articles:article_delete' article.pk %}" method="POST">
+    {% csrf_token %}
+    <button>Delete</button>
+  </form>
+</div>
+{% endif %}
+  
+<p>
+  {{ article.content|linebreaksbr }}
+</p>
+<div>
+  <form action="{% url 'articles:article_like' article.pk %}" method="POST">
+    {% csrf_token %}
+    {% if is_like %}
+      <button><i class="fa-solid fa-heart" style = "color:crimson"></i></button>
+    {% else %}
+    <button><i class="fa-regular fa-heart"></i></button>
+    {% endif %}
+    <span>{{ article.like_users.count }} 명이 좋아합니다.</span>
+  </form>
+</div>
+
+
+<hr>
+
+{% include 'articles/_comment.html' %}
+
+{% endblock content %}
+
