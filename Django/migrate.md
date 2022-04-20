@@ -11,9 +11,9 @@ python manage.py sqlmigrate app_name 0001
 
 ```
 
-![image-20220308170150115](migrate.assets/image-20220308170150115.png)
+![image-20220308170150115](../images/typora_assets/image-20220308123553016-16504216585471.png)
 
-![image-20220308170158567](migrate.assets/image-20220308170158567.png)
+![image-20220308170158567](../images/typora_assets/image-20220308123553016.png)
 
 
 
@@ -25,9 +25,9 @@ python manage.py sqlmigrate app_name 0001
 
 ## DataBase API
 
-![image-20220308170343711](migrate.assets/image-20220308170343711.png)
+![image-20220308170343711](../images/typora_assets/image-20220308123553016-16504216781092.png)
 
-![image-20220308170352982](migrate.assets/image-20220308170352982.png)
+![image-20220308170352982](../images/typora_assets/image-20220308123553016-16504216817263.png)
 
 ## CRUD (Create, Read, Update, Delete)
 
@@ -43,6 +43,6 @@ python manage.py sqlmigrate app_name 0001
 
 ##  Admin Site
 
-![image-20220308170548287](migrate.assets/image-20220308170548287.png)
+![image-20220308170548287](../images/typora_assets/image-20220308123553016-16504216841804.png)
 
-![image-20220308170600487](migrate.assets/image-20220308170600487.png)
+![image-20220308170600487](../images/typora_assets/image-20220308123553016-16504216863875.png)
