@@ -173,7 +173,10 @@
    - `ORM` : `.values` 활용
      - 예시: `User.objects.filter(조건).values(컬럼이름)`
 
+   
+
    ```python
+   
    # orm
    
    User.objects.filter(age=30)  # 객체 return
