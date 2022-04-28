@@ -27,7 +27,9 @@
     const output = document.querySelector('#output')
 
     function filterMessage(event) {
-      // badWords에 포함된 단어가 입력될 경우, '**'으로 변환하여 output에 출력 
+      // badWords에 포함된 단어가 입력될 경우, '**'으로 변환하여 output에 출력
+      let filteredInput = event.target.value
+      badWords.forEach(badWord => filteredInput = filteredInput.replaceAll(badWord, '**')) 
       output.innerText = filteredInput
     }
 
