@@ -51,6 +51,45 @@
       (완성 이후 카드 예시는 삭제)
     */
 
+    const form = document.querySelector('#form')
+    const cardsSection = document.querySelector('#cardsSection')
+
+    function createCard(title, content) {
+      const article = document.createElement('article')
+      article.classList.add('col-4')
+      
+      const card = document.createElement('div')
+      card.classList.add('card', 'm-1')
+      
+      const cardBody = document.createElement('div')
+      cardBody.classList.add('card-body')
+      
+      const cardTitle = document.createElement('h5')
+      cardTitle.classList.add('card-title')
+      cardTitle.innerText = title
+
+      const cardText = document.createElement('p')
+      cardText.classList.add('card-text')
+      cardText.innerText = content
+
+      cardBody.append(cardTitle, cardText)
+      card.append(cardBody)
+      article.append(card)
+
+      return article
+    }
+
+    form.addEventListener('submit', function(event) {
+      event.preventDefault()
+      
+      const title = document.querySelector('#title')
+      const content = document.querySelector('#content')
+
+      const newCard = createCard(title.value, content.value)
+      cardsSection.append(newCard)
+
+      event.target.reset()
+    })
   </script>
 </body>
 
