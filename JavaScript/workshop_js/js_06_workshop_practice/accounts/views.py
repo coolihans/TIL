@@ -1,3 +1,4 @@
+from operator import is_
 from django.shortcuts import get_object_or_404, redirect, render
 from django.contrib.auth import login as auth_login
 from django.contrib.auth import logout as auth_logout
@@ -107,7 +108,26 @@ def profile(request, username):
     return render(request, 'accounts/profile.html', context)
 
 
-@require_POST
+from django.http import JsonResponse
+
+# http://127.0.0.1:8000/accounts/1/follow/
+@require_POST   
 def follow(request, user_pk):
-    # CODE HERE
-    pass
+    me = request.user
+    you = get_object_or_404(get_user_model(), pk=user_pk)
+
+    if me != you:
+        if you.followers.filter(pk=me.pk).exists():
+            you.followers.remove(me)
+            is_following = False
+        else:
+            you.followers.add(me)
+            is_following = True
+
+    dict_data = {
+        'isFollowing': is_following,
+        'followersCount': you.followers.count(),
+        'followingsCount': you.followings.count(),
+    }
+
+    return JsonResponse(dict_data)
