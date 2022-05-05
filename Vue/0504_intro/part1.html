@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		.dark-mode {
+			background-color: rgb(32, 31, 31);
+			color: white;
+		}
+		
+		.light-mode {
+			background-color: white;
+			color: black
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<h1>{{ h1Message }}</h1>
+		
+		<button @click="switchTheme">
+			{{ buttonMessage }}
+		</button>
+
+		<div :class="dark ? 'dark-mode' : 'light-mode'">
+			<ul>
+				<li v-for="article in articles">
+					<strong>{{ article.title }}</strong>: {{ article.content }}
+				</li>
+			</ul>
+		</div>
+	</div>
+			
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script>
+		new Vue ({
+			el: '#app',
+			data: {
+				dark: true,
+				articles: [
+					{id: 1, title: 'Hello', content: 'World'},
+					{id: 2, title: '안녕', content: '디지몬'},
+					{id: 3, title: '안녕', content: '포켓몬'},
+
+				],
+			},
+			// 모든 종류의 함수 (90%는 콜백함수)
+			methods: {
+				switchTheme: function () {
+					this.dark = !this.dark
+					
+				}
+			},
+			// {data 를 기반으로 } 계산된 속성
+			computed: {
+				buttonMessage: function () {
+					console.log('dark값이 바뀜. "나" 강림')
+					return this.dark ? '밝게' : '어둡게'
+				},
+				h1Message: function () {
+					return this.dark ? 'Dark Mode' : 'Light Mode'
+				}
+			}
+		})
+	</script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <!-- 메서드 핸들러 -->
+    <button @click="alertHello" >Vutton</button>
+    <!-- 기본 동작 방지 -->
+    <form action="" @submit.prevent>
+      <button>Button</button>  
+    </form>
+    <!-- 키 별칭을 이용한 키 입력 수식어 -->    
+    <input type="text" @keyup.enter="log">
+    <input type="text" @keyup.enter="log('saffy')">
+
+    <p>{{message}}</p>
+    <button @click="changeMessage">Change</button>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+    const app = new Vue ({
+      el: '#app',
+      data: {
+        message: 'hello Vue'
+      },
+      methods: {
+        alertHello: function () {
+          alert('에이치아이~')
+        },
+        log: function (sth) {
+          console.log(sth)
+        },
+        changeMessage() {
+          this.message = 'New Mess'
+        },
+      }
+    })
+  </script>
+</body>
+</html>
