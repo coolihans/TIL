@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% load bootstrap5 %}
+{% block content %}
+  <h1>Movies</h1>
+
+  <div id="movieList">
+    {% for movie in movies %}
+    <div class="d-flex">
+      <div>
+        <img src="{{ movie.poster_path }}" alt="{{ movie.title }}'s poster" style="width: 200px;">
+      </div>
+      <div class="ms-2">
+        <h2>{{ movie.title }}</h2>
+        <p>{{ movie.overview }}</p>
+        <a href="{% url 'movies:detail' movie.pk %}" class="btn btn-outline-secondary btn-sm">DETAIL</a>
+      </div>
+    </div>
+    <hr>
+    {% endfor %}
+  </div>
+
+  
+{% endblock %}
+
+{% block script %}
+<script>
+  let page = 2
+  const movieList = document.querySelector('#movieList')
+
+  document.addEventListener('scroll', function (event) {
+    const { scrollTop, clientHeight, scrollHeight } = document.documentElement
+    
+    // if (scrollHeight - scrollTop === clientHeight) {
+    if (scrollTop + clientHeight >= scrollHeight - 7) {
+      axios({
+        method: 'get',
+        url: `/movies/ajax/?page=${page}`
+      })
+        .then(res => {
+          const movies = res.data
+          movies.forEach(movie =>{  
+            
+            const movieDiv = document.createElement('div')
+            movieDiv.classList.add('d-flex')
+            const imgDiv = document.createElement('div')
+            const contentDiv = document.createElement('div')
+            contentDiv.classList.add('ms-2')
+  
+            const img = document.createElement('img')
+            img.src = movie.poster_path
+            img.alt = `${movie.title}'s poster`
+            img.setAttribute('style', 'width: 200px;')
+            const h2 = document.createElement('h2')
+            h2.innerText = movie.title
+            const p = document.createElement('p')
+            p.innerText = movie.overview
+            const a = document.createElement('a')
+            a.innerText = 'DETAIL'
+            a.setAttribute('class', 'btn btn-outline-secondary btn-sm')
+            a.href = `/movies/${movie.id}/`
+            const hr = document.createElement('hr')
+
+            imgDiv.append(img)
+            contentDiv.append(h2, p, a)
+            movieDiv.append(imgDiv, contentDiv)
+
+            movieList.append(movieDiv, hr)
+          })
+
+          page++
+        })
+        .catch(res => console.error(err))
+    }
+  })
+
+</script>
+
+{% endblock script %}
