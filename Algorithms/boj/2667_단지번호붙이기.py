@@ -2,6 +2,8 @@ from collections import deque
 
 direction = ((-1, 0), (1, 0), (0, -1), (0, 1))
 # 단지의 이름(번호 네이밍)은 필요 없네
+
+
 def bfs(i, j):
     queue = deque()
     queue.append((i, j))
