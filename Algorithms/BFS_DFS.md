@@ -10,8 +10,6 @@
 
 
 
-	# DFS (가지치기) 백트래킹
-
-
+# DFS (가지치기) 백트래킹
 
 ![image-20220318151639556](C:\Users\hans\AppData\Roaming\Typora\typora-user-images\image-20220318151639556.png)
